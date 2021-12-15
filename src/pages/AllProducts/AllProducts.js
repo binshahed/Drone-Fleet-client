@@ -20,10 +20,10 @@ const AllProducts = props => {
   }
 
   return (
-    <div className='allProducts'>
+    <div className='allProducts '>
         {!props?.home && <Navigation/>}
-      <div className='container'>
-        <h1 className='text-center py-5 my-5'>Drone Products</h1>
+      <div className='container py-5'>
+        <h1 className='text-center py-5 my-5 pseudo_border'>Drone Products</h1>
         <Row xs={1} md={3} className='g-4'>
           {props?.home
             ? homeProduct.map(product => (
@@ -35,7 +35,7 @@ const AllProducts = props => {
             : products.map(product => (
                 <SingleProduct
                   product={product}
-                  key={product.id}
+                  key={product._id}
                 ></SingleProduct>
               ))}
         </Row>

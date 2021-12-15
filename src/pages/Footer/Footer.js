@@ -33,9 +33,15 @@ const Footer = () => {
               </p>
             </div>
             <div className='col-md-4 col-sm-12'>
-              <h3 className='py-4 text-warning'>Instagram</h3>
+              <h3 className='py-4 text-warning'>Others Site</h3>
               <p className='py-1 px-3'>
-                Donec eu volutpat nibh, in maximus ligula.
+                <a href="https://tripo-4c919.web.app/">Tripo</a>
+              </p>
+              <p className='py-1 px-3'>
+                <a href="https://care-now-8bae1.web.app/">Care Now</a>
+              </p>
+              <p className='py-1 px-3'>
+                <a href="https://heuristic-snyder-e143bf.netlify.app/">Nota Corda</a>
               </p>
             </div>
             <div className='col-md-4 col-sm-12'>

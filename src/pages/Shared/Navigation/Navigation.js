@@ -1,10 +1,12 @@
 import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import logo from '../../../images/lightLogo.png'
+import useAuth from '../../context/useAuth'
 import './Navigation.css'
 
 const Navigation = () => {
+  const { user, handleSignOut } = useAuth()
   return (
     <Navbar
       style={{ background: '#737373' }}
@@ -23,11 +25,16 @@ const Navigation = () => {
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'>
             <Link to='/drones'>Drones</Link>
-            <Link to='/drones'>Drones</Link>
+            <Link to='/about'>About Us</Link>
           </Nav>
           <Nav>
-          <Link to='/drones'>Drones</Link>
-          <Link to='/drones'>Drones</Link>
+            <Link to='/drones'>Drones</Link>
+            {user?.email && <span>{user.displayName}</span>}
+            {user?.email ? (
+              <Button onClick={handleSignOut}>logout</Button>
+            ) : (
+              <Link to='/register'>Register</Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

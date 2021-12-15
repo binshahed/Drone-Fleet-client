@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+
 // load data from db
 const useProducts = () => {
   const [products, setProducts] = useState([])
@@ -7,7 +8,7 @@ const useProducts = () => {
 
   useEffect(() => {
     setWaiting(true)
-    fetch('./droneData.json')
+    fetch('http://localhost:5000/products')
       .then(res => res.json())
       .then(data => {
         setProducts(data)
