@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 const SingleProduct = props => {
   const {
  
-    id,
+    _id,
     product_name,
     product_detail,
     product_img,
     product_price
   } = props.product
-  console.log(id);
+
   return (
     <Col>
       <Card>
@@ -20,8 +20,8 @@ const SingleProduct = props => {
           <Card.Title>{product_name}</Card.Title>
           <Card.Text>{product_detail}</Card.Text>
           <div className='text-center'>
-            <Card.Text className='fw-bold '>Price: {product_price}</Card.Text>
-            <Link to={`/drone/${id}`}>
+            <Card.Text className='fw-bold '>Price: {product_price}$</Card.Text>
+            <Link to={`/drones/${_id}`}>
               <Button className='fw-bold '>Buy Now</Button>
             </Link>
           </div>

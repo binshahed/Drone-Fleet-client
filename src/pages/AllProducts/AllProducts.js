@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Row, Spinner } from 'react-bootstrap'
 import useProducts from '../../hooks/useProducts'
 import Footer from '../Footer/Footer'

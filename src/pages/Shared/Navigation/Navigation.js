@@ -28,7 +28,7 @@ const Navigation = () => {
             <Link to='/about'>About Us</Link>
           </Nav>
           <Nav>
-            <Link to='/drones'>Drones</Link>
+            <Link to='/dashboard'>Dashboard</Link>
             {user?.email && <span>{user.displayName}</span>}
             {user?.email ? (
               <Button onClick={handleSignOut}>logout</Button>

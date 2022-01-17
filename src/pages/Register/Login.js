@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import Navigation from '../Shared/Navigation/Navigation'
-import { Alert, Button, Spinner } from 'react-bootstrap'
+import { Alert, Spinner } from 'react-bootstrap'
 import useAuth from '../context/useAuth'
 import {
   useHistory,
@@ -15,11 +15,16 @@ const Login = () => {
 
   const location = useLocation()
   const history = useHistory()
+  const redirect_uri = location.state?.from || '/'
+
+  const handleGoogleSignIn = () => {
+    googleSignIn(history, redirect_uri)
+  }
 
   const {
     register,
     handleSubmit,
-    watch,
+
     formState: { errors }
   } = useForm()
   const onSubmit = data => {
@@ -27,7 +32,6 @@ const Login = () => {
     loginUser(data.email, data.password, location, history)
   }
 
-  console.log(watch('example'))
   return (
     <div>
       <Navigation />
@@ -73,7 +77,7 @@ const Login = () => {
                     New User? Please <Link to='/register'>Register</Link>.
                   </p>
                   <button
-                    onClick={googleSignIn}
+                    onClick={handleGoogleSignIn}
                     type='button'
                     className='login-with-google-btn'
                   >

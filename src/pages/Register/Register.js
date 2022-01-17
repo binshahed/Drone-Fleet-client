@@ -4,18 +4,22 @@ import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import Navigation from '../Shared/Navigation/Navigation'
 import useAuth from '../context/useAuth'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import { Alert, Button, Spinner } from 'react-bootstrap'
+import {
+  useHistory,
+  useLocation
+} from 'react-router-dom/cjs/react-router-dom.min'
+import { Alert, Spinner } from 'react-bootstrap'
 
 const Register = () => {
-  const { user, isLoading, registerUser, authError,googleSignIn } = useAuth()
+  const { user, isLoading, registerUser, authError, googleSignIn } = useAuth()
 
+  const location = useLocation()
   const history = useHistory()
+  const redirect_uri = location.state?.from || '/'
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm()
   const onSubmit = data => {
@@ -23,7 +27,7 @@ const Register = () => {
       alert('password dose not matched')
       return
     }
-    registerUser(data.email, data.password, data.name, history)
+    registerUser(data.email, data.password, data.name,history, redirect_uri)
     console.log(data)
   }
 
@@ -84,7 +88,7 @@ const Register = () => {
                     </div>
                   </form>
                 )}
-                {isLoading && <Spinner animation="border" variant="danger" />}
+                {isLoading && <Spinner animation='border' variant='danger' />}
                 <div className='mt-3 text-center'>
                   <p>
                     Already have an account? Please{' '}
@@ -99,12 +103,18 @@ const Register = () => {
                   </button>
                 </div>
                 {user?.email && (
-                  <Alert style={{ textAlign: 'center', marginTop:'15px' }} severity='success'>
+                  <Alert
+                    style={{ textAlign: 'center', marginTop: '15px' }}
+                    severity='success'
+                  >
                     User Successfully Created
                   </Alert>
                 )}
                 {authError && (
-                  <Alert style={{ textAlign: 'center', marginTop:'15px' }} variant='danger'>
+                  <Alert
+                    style={{ textAlign: 'center', marginTop: '15px' }}
+                    variant='danger'
+                  >
                     {authError}
                   </Alert>
                 )}

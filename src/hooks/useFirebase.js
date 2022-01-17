@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   updateProfile,
-  getIdToken
+
 } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 
@@ -28,7 +28,7 @@ const useFirebase = () => {
         const user = result.user
         setError('')
         setUser(user)
-        history.push(redirect_uri)
+        history?.push(redirect_uri)
       })
       .catch(error => {
         const errorMessage = error.message
@@ -39,12 +39,12 @@ const useFirebase = () => {
       })
   }
 
-  const registerUser = (email, password, name, history) => {
+  const registerUser = (email, password, name, history,redirect_uri) => {
     setIsLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
         // Signed in
-        const user = userCredential.user
+  
         setAuthError('')
         const newUser = { email, displayName: name }
         // saveUser(email, name, 'POST')
@@ -61,11 +61,12 @@ const useFirebase = () => {
             // An error occurred
             // ...
           })
-        history.replace('/')
+        
         // ...
       })
+      history?.push(redirect_uri)
       .catch(error => {
-        const errorCode = error.code
+        
         setAuthError(error.message)
         // ..
       })
@@ -81,13 +82,13 @@ const useFirebase = () => {
         const destination = location?.state?.from || '/'
         history.replace(destination)
         // Signed in
-        const user = userCredential.user
+      
         setAuthError('')
 
         // ...
       })
       .catch(error => {
-        const errorCode = error.code
+        
         setAuthError(error.message)
       })
       .finally(() => {
