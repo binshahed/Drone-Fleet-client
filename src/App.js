@@ -12,7 +12,6 @@ import initializeAuthentication from './pages/Register/firebase/firebase.init'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import PrivateRoute from './pages/Register/PrivateRoute/PrivateRoute'
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard'
-import Navbar from './pages/Dashboard/Dashboard/Navbar'
 
 initializeAuthentication()
 function App () {
@@ -24,7 +23,7 @@ function App () {
             <Route exact path='/'>
               <Home />
             </Route>
-            <Route exact path='/drones'>
+            <Route exact  path='/drones'>
               <AllProducts />
             </Route>
             <Route exact path='/about'>
@@ -33,8 +32,8 @@ function App () {
             <PrivateRoute exact path='/drones/:productId'>
               <ProductDetail />
             </PrivateRoute>
-            <PrivateRoute exact path='/dashboard'>
-              <Navbar />
+            <PrivateRoute  path='/dashboard'>
+              <Dashboard />
             </PrivateRoute>
             <Route exact path='/login'>
               <Login />

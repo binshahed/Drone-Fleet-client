@@ -3,7 +3,7 @@ import React from 'react';
 
 export const SidebarData = [
   {
-    title: 'Order',
+    title: 'Home',
     path: '/orderCollection',
     // icon: <AiIcons.AiFillHome />,
     cName: 'nav-text'

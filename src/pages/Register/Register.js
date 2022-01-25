@@ -95,7 +95,7 @@ const Register = () => {
                     <Link to='/login'>Login</Link>.
                   </p>
                   <button
-                    onClick={googleSignIn}
+                    onClick={()=>googleSignIn(history, redirect_uri)}
                     type='button'
                     className='login-with-google-btn'
                   >

@@ -1,9 +1,15 @@
-nav a{
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    /* margin-right:  18px; */
-    padding: 20px;
+nav a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  /* margin-right:  18px; */
+  padding: 20px;
 }
-nav a:hover{
-    color: orange;
+nav a:hover {
+  color: rgb(234, 196, 12);
+}
+
+nav button {
+  
+  height: 50px;
+  margin-top: 10px;
 }

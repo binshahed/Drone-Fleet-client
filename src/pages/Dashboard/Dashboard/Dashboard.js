@@ -1,19 +1,26 @@
 import React, { useState } from 'react'
-import * as FaIcons from 'react-icons/fa'
-import * as AiIcons from 'react-icons/ai'
-import { Link, Route, Switch } from 'react-router-dom'
+
+import { Route, Switch } from 'react-router-dom'
 import './Navbar.css'
 
-import { SidebarData } from './SidebarData'
-import Home from '../../Home/Home/Home'
+import DashboardHome from '../DashboardPage/DashboardHome'
+import Navbar from './Navbar'
+import { useRouteMatch } from 'react-router-dom/cjs/react-router-dom.min'
+import OrderList from '../DashboardPage/OrderList'
 
 function Dashboard () {
+  let { path, url } = useRouteMatch()
+  console.log(path);
   return (
     <>
+      <Navbar />
       <Switch>
-        <Route path='/orderCollection' exact component={Home} />
-        {/* <Route path='/reports' component={Reports} />
-        <Route path='/products' component={Products} /> */}
+        <Route exact  path={`${path}`}>
+          <DashboardHome />
+        </Route>
+        <Route  path={`${path}/orderList`}>
+          <OrderList />
+        </Route>
       </Switch>
     </>
   )

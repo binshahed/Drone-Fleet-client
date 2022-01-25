@@ -29,9 +29,11 @@ const Navigation = () => {
           </Nav>
           <Nav>
             <Link to='/dashboard'>Dashboard</Link>
-            {user?.email && <span>{user.displayName}</span>}
+            {user?.email && (
+              <p style={{ color: 'rgb(234,196,12)', padding:"20px"}}>{user.displayName}</p>
+            )}
             {user?.email ? (
-              <Button onClick={handleSignOut}>logout</Button>
+              <Button style={{ backgroundColor: 'rgb(234,196,12)',borderColor: 'rgb(234,196,12)', }}onClick={handleSignOut}>logout</Button>
             ) : (
               <Link to='/register'>Register</Link>
             )}
