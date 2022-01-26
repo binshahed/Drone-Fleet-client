@@ -21,7 +21,8 @@ const ProductDetail = () => {
   const onSubmit = data => {
     data.product = productFound
     const date = new Date()
-    data.date= date.toLocaleDateString()
+    data.status = 'pending'
+    data.date = date.toLocaleDateString()
 
     axios.post('http://localhost:5000/orders', data).then(res => {
       if (res.data.insertedId) {

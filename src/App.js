@@ -13,8 +13,10 @@ import ProductDetail from './pages/ProductDetail/ProductDetail'
 import PrivateRoute from './pages/Register/PrivateRoute/PrivateRoute'
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard'
 
+
 initializeAuthentication()
 function App () {
+  
   return (
     <div>
       <AuthProvider>
@@ -23,7 +25,7 @@ function App () {
             <Route exact path='/'>
               <Home />
             </Route>
-            <Route exact  path='/drones'>
+            <Route exact path='/drones'>
               <AllProducts />
             </Route>
             <Route exact path='/about'>
@@ -32,9 +34,11 @@ function App () {
             <PrivateRoute exact path='/drones/:productId'>
               <ProductDetail />
             </PrivateRoute>
-            <PrivateRoute  path='/dashboard'>
+
+            <PrivateRoute path='/dashboard'>
               <Dashboard />
             </PrivateRoute>
+
             <Route exact path='/login'>
               <Login />
             </Route>

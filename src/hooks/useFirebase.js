@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,7 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   updateProfile,
-
+  getIdToken
 } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 
@@ -16,7 +17,7 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
   const [authError, setAuthError] = useState('')
-
+  const [admin, setAdmin] = useState(false)
 
   const auth = getAuth()
   const googleProvider = new GoogleAuthProvider()
@@ -28,6 +29,7 @@ const useFirebase = () => {
         const user = result.user
         setError('')
         setUser(user)
+        upsertUserDb(user.email, user.displayName)
         history?.push(redirect_uri)
       })
       .catch(error => {
@@ -39,12 +41,12 @@ const useFirebase = () => {
       })
   }
 
-  const registerUser = (email, password, name, history,redirect_uri) => {
+  const registerUser = (email, password, name, history, redirect_uri) => {
     setIsLoading(true)
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
+    createUserWithEmailAndPassword(auth, email, password).then(
+      userCredential => {
         // Signed in
-  
+
         setAuthError('')
         const newUser = { email, displayName: name }
         // saveUser(email, name, 'POST')
@@ -61,12 +63,14 @@ const useFirebase = () => {
             // An error occurred
             // ...
           })
-        
+
         // ...
-      })
-      history?.push(redirect_uri)
+      },
+      saveUserDB(email, name)
+    )
+    history
+      ?.push(redirect_uri)
       .catch(error => {
-        
         setAuthError(error.message)
         // ..
       })
@@ -82,31 +86,49 @@ const useFirebase = () => {
         const destination = location?.state?.from || '/'
         history.replace(destination)
         // Signed in
-      
+
         setAuthError('')
 
         // ...
       })
       .catch(error => {
-        
         setAuthError(error.message)
       })
       .finally(() => {
         setIsLoading(false)
       })
   }
-
+  // set admin
   useEffect(() => {
-    onAuthStateChanged(auth, user => {
+    fetch(`http://localhost:5000/users/${user.email}`)
+      .then(response => response.json())
+      .then(data => {
+        setAdmin(data.admin)
+      })
+  }, [user.email])
+
+  // observer user state
+  useEffect(() => {
+    const unsubscribed = onAuthStateChanged(auth, user => {
       if (user) {
         setUser(user)
-        setError('')
-
-        // ...
+      } else {
+        setUser({})
       }
       setIsLoading(false)
     })
-  }, [])
+    return () => unsubscribed
+  }, [auth])
+
+  const saveUserDB = (email, displayName) => {
+    const user = { email, displayName }
+    axios.post('http://localhost:5000/users', user).then()
+  }
+  const upsertUserDb = (email, displayName) => {
+    const user = { email, displayName }
+    axios.put('http://localhost:5000/users', user).then()
+  }
+
   /*-------------
     sign out
     ---------------*/
@@ -130,6 +152,7 @@ const useFirebase = () => {
     isLoading,
     setIsLoading,
     error,
+    admin,
     setError,
     googleSignIn,
     handleSignOut,
