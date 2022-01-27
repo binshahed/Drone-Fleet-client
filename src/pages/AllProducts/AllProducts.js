@@ -6,7 +6,7 @@ import Navigation from '../Shared/Navigation/Navigation'
 import SingleProduct from './SingleProduct'
 
 const AllProducts = props => {
-  const [products, waiting] = useProducts([])
+  const [products,setProducts, waiting] = useProducts([])
   console.log(products)
 
   const homeProduct = products.slice(0, 6)

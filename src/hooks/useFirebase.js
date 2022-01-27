@@ -7,8 +7,7 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  updateProfile,
-  getIdToken
+  updateProfile
 } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 
@@ -21,6 +20,8 @@ const useFirebase = () => {
 
   const auth = getAuth()
   const googleProvider = new GoogleAuthProvider()
+
+  
 
   const googleSignIn = (history, redirect_uri) => {
     setIsLoading(true)
@@ -98,6 +99,8 @@ const useFirebase = () => {
         setIsLoading(false)
       })
   }
+  
+
   // set admin
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user.email}`)
@@ -128,6 +131,8 @@ const useFirebase = () => {
     const user = { email, displayName }
     axios.put('http://localhost:5000/users', user).then()
   }
+
+  
 
   /*-------------
     sign out

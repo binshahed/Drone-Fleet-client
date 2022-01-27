@@ -22,7 +22,7 @@ const SingleProduct = props => {
           <div className='text-center'>
             <Card.Text className='fw-bold '>Price: {product_price}$</Card.Text>
             <Link to={`/drones/${_id}`}>
-              <Button className='fw-bold '>Buy Now</Button>
+              <Button variant='warning' >Buy Now</Button>
             </Link>
           </div>
         </Card.Body>

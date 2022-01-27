@@ -6,7 +6,7 @@ import useAuth from '../../context/useAuth'
 
 const AdminRoute = ({ children, ...rest }) => {
   const { user,admin, isLoading } = useAuth()
-  if (isLoading) {
+  if (!admin?.role==='admin') {
     return <Spinner animation="border" variant="danger" />
   }
   return (
@@ -18,7 +18,7 @@ const AdminRoute = ({ children, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: '/',
+              pathname: '/dashboard',
               state: { from: location }
             }}
           />

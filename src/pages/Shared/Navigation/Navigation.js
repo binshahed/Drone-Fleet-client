@@ -9,7 +9,6 @@ const Navigation = () => {
   const { user, handleSignOut } = useAuth()
 
   const activeStyle = {
-   
     color: 'rgb(234, 196, 12)'
   }
   return (
@@ -37,13 +36,13 @@ const Navigation = () => {
             </NavLink>
           </Nav>
           <Nav>
-            <NavLink  to='/dashboard'>
-              Dashboard
-            </NavLink>
             {user?.email && (
-              <p style={{ color: 'rgb(234,196,12)', padding: '20px' }}>
-                {user.displayName}
-              </p>
+              <>
+                <NavLink to='/dashboard'>Dashboard</NavLink>
+                <p style={{ color: 'rgb(234,196,12)', padding: '20px' }}>
+                  {user.displayName}
+                </p>
+              </>
             )}
             {user?.email ? (
               <Button

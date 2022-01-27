@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import { Spinner } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import useProducts from '../../hooks/useProducts'
@@ -8,7 +9,7 @@ import Footer from '../Footer/Footer'
 import Navigation from '../Shared/Navigation/Navigation'
 
 const ProductDetail = () => {
-  const [products] = useProducts()
+  const [products, setProducts, waiting] = useProducts()
 
   const { productId } = useParams()
   const productFound =
@@ -34,20 +35,30 @@ const ProductDetail = () => {
     console.log(data)
   }
 
+  if (waiting) {
+    return (
+      <div className='App my-5'>
+        <Spinner style={{marginTop:'200px', height:'100px', width:'100px'}} animation='border' variant='warning' />
+      </div>
+    )
+  }
+
   return (
     <div>
       <Navigation />
       <div className='container pt-5 mt-5'>
         <div className='row'>
           <div className='col-md-6'>
-            <h1>{productFound?.product_name}</h1>
-            <img
-              style={{ width: '100%' }}
-              src={productFound?.product_img}
-              alt=''
-            />
-            <h4 className='py-3'>Price: {productFound?.product_price}$</h4>
-            <p>{productFound?.product_detail}</p>
+            <>
+              <h1>{productFound?.product_name}</h1>
+              <img
+                style={{ width: '100%' }}
+                src={productFound?.product_img}
+                alt=''
+              />
+              <h4 className='py-3'>Price: {productFound?.product_price}$</h4>
+              <p>{productFound?.product_detail}</p>
+            </>
           </div>
           <div className='col-md-6'>
             <div className='py-5'>

@@ -17,8 +17,8 @@ const OrderList = () => {
   console.log(myOrders)
 
   const handleDelete = id => {
-    const proceed = window.confirm('Are you sure you want to cancel order')
-    const url = `https://infinite-everglades-05408.herokuapp.com/booking/${id}`
+    const proceed = window.confirm('Are you sure? Delete This Product')
+    const url = `http://localhost:5000/orders/${id}`
     if (proceed) {
       fetch(url, {
         method: 'DELETE'
@@ -26,7 +26,7 @@ const OrderList = () => {
         .then(res => res.json())
         .then(data => {
           if (data.deletedCount > 0) {
-            alert('deleted successfully')
+            alert('order deleted successfully')
             const remainingOrders = myOrders.filter(order => order._id !== id)
             setMyOrders(remainingOrders)
           }
@@ -37,7 +37,11 @@ const OrderList = () => {
   if (isLoading) {
     return (
       <div className='App my-5'>
-        <Spinner animation='border' variant='warning' />
+        <Spinner
+          style={{ marginTop: '200px', height: '100px', width: '100px' }}
+          animation='border'
+          variant='warning'
+        />
       </div>
     )
   }

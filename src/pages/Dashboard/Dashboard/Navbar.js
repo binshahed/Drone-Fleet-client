@@ -18,13 +18,11 @@ import {
 import './Navbar.css'
 import { useRouteMatch } from 'react-router-dom/cjs/react-router-dom.min'
 import useAuth from '../../context/useAuth'
-import { Spinner } from 'react-bootstrap'
-
 
 function Navbar () {
-  const [sidebar, setSidebar] = useState(false)
+  const [sidebar, setSidebar] = useState(true)
   let { path, url } = useRouteMatch()
-  const { isLoading, admin, handleSignOut } = useAuth()
+  const { admin, handleSignOut } = useAuth()
 
   const showSidebar = () => setSidebar(!sidebar)
 
@@ -44,13 +42,13 @@ function Navbar () {
         </NavLink>
       </div>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-        <ul className='nav-menu-items' onClick={showSidebar}>
-          <li className='navbar-toggle'>
-            <NavLink  to='#' className='menu-bars'>
+        <ul className='nav-menu-items' >
+          <li className='navbar-toggle' >
+            <NavLink to='#' className='menu-bars' onClick={showSidebar}>
               <AiIcons.AiOutlineClose />
             </NavLink>
           </li>
-          <NavLink activeStyle={activeStyle}  to={`${path}`}>
+          <NavLink activeStyle={activeStyle} to={`${path}`}>
             <h5>
               <FontAwesomeIcon
                 icon={faHome}
@@ -88,9 +86,7 @@ function Navbar () {
             </h5>
           </NavLink>
 
-        
-         
-          {admin  && (
+          {admin && (
             <div>
               <NavLink activeStyle={activeStyle} to={`${url}/manageOrder`}>
                 <h5>

@@ -1,0 +1,34 @@
+.reasons{
+    background:linear-gradient(0deg, rgb(74,74,74, 0.7),rgba(66, 66, 66, 0.7)), url(../../../images/dronebg2.jpg);
+}
+.reasons p svg {
+  color: #fff;
+  font-size: 100px;
+  margin: auto;
+
+}
+.reasons h1{
+    color: #fff;
+}
+.reasons p{
+    font-size:20px;
+
+    color: #fff
+}
+
+.reasons .reasons-icon{
+    text-align: center;
+    border-radius: 50%;
+    height:200px;
+    width:200px;
+    padding: 15%;
+    margin-left: 65px;
+    transition: all 1.3s
+}
+
+.reasons .reasons-icon:hover{
+    background-color:goldenrod;
+    color: #fff;
+    border-radius: 50%;
+    
+}
