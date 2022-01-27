@@ -7,8 +7,10 @@ const MakeAdmin = () => {
   const onSubmit = data => {
     console.log(data)
     axios.put('http://localhost:5000/users/admin', data).then(res => {
-      alert('added successfully')
-      reset()
+      if (res.data.modifiedCount) {
+        alert('admin Add successfully')
+        reset()
+      }
     })
   }
 

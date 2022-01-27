@@ -2,61 +2,138 @@ import React from 'react'
 import aboutUsImg from '../../images/aboutus.jpg'
 import Footer from '../Footer/Footer'
 import Navigation from '../Shared/Navigation/Navigation'
+import './AboutUs.css'
 
 const AboutUs = props => {
   return (
     <div>
       {!props.home && <Navigation />}
-      <div className='container py-5 my-5'>
-        <h1 className='text-center py-5 pseudo_border'>About Us</h1>
-
-        <div className='row'>
-          <div className='col-md-6 col-sm-12'>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-              esse recusandae illo animi accusantium repudiandae saepe.
-              Explicabo consequatur aspernatur quaerat, voluptatibus labore
-              pariatur eveniet accusantium itaque ut nisi illo nostrum tempora
-              ea culpa architecto necessitatibus et delectus eligendi quo. Quas
-              rem deserunt dignissimos numquam assumenda possimus repudiandae,
-              aliquam quod, accusamus omnis veritatis optio quibusdam
-              doloremque, est beatae rerum enim laborum nisi. Pariatur est vitae
-              adipisci? Deserunt voluptatibus nam consectetur quas, soluta,
-              molestiae similique id iste odit voluptate, optio assumenda
-              laboriosam architecto quo dicta excepturi sapiente explicabo ad
-              eum earum nostrum vel ab illum culpa. Porro reprehenderit cumque
-              sint eveniet perspiciatis officia assumenda nam consectetur odio
-              optio, alias cum magnam accusantium eius maiores eos nulla
-              laudantium labore neque non sit animi at. Consequatur ut ullam qui
-              perferendis in quia libero alias aut voluptatum. Quae cumque enim
-              quis, nesciunt maxime architecto sequi, eum eligendi iure non
-              placeat at eaque voluptatibus nostrum aspernatur accusantium.
-              Excepturi, repellendus. Iste, expedita omnis. Lorem ipsum, dolor
-              sit amet consectetur adipisicing elit. Quia necessitatibus
-              voluptate, reiciendis eos ad at velit asperiores vero minus
-              maiores, quos accusamus nobis laudantium perspiciatis magni omnis
-              soluta eveniet aliquid alias atque animi vitae esse optio autem.
-              Dicta numquam eligendi totam. Odit atque aliquid eos voluptate,
-              magni consequatur, porro doloremque tenetur obcaecati a in ab
-              commodi ipsa. Beatae recusandae voluptatibus dolore ex ab eius ea
-              quidem nihil quae doloremque! Exercitationem ipsum quasi eos,
-              maxime aliquam, id officia enim mollitia odio pariatur nemo error
-              nisi voluptatem laboriosam et expedita nesciunt aut? Facilis quos
-              exercitationem amet quisquam itaque dicta animi error beatae,
-              dolore officia recusandae distinctio nihil similique odit numquam
-              temporibus autem officiis nostrum fugit qui iste nobis voluptatem
-              quidem. Qui expedita deleniti culpa, provident non sit nostrum
-              sequi consequatur, veniam dolorum alias neque aliquid earum iste
-              eligendi libero quo doloremque laborum voluptatibus, error rerum?
-              Sed est fuga consequatur pariatur velit nobis recusandae maiores
-              sunt, magni soluta assumenda.
-            </p>
+      <section className='page-section' id='about'>
+        <div className='container'>
+          <div className='text-center'>
+            <h2 className='text-center py-5 pseudo_border'>
+              About Drone Fleet
+            </h2>
+            <h3 className='section-subheading text-muted'>
+              Since 2015, Drone Fleet has been excited to provide our customers
+              with the latest drone technology, quick shipping, and excellent
+              customer service. Our top priorities have always been providing a
+              great shopping experience and educating people about all things
+              drone-related. Our knowledgeable sales representatives and
+              technical support staff have over 20 years of experience in the
+              industry, and we are committed to sharing our expertise with our
+              customers. Through our custom-made enterprise solutions, we have
+              helped countless companies and agencies take their operations to
+              the next level.
+              <br />
+              <br />
+              Thank you for choosing Drone Fleet!
+            </h3>
           </div>
-          <div className='col-md-6 col-sm-12'>
-            <img style={{ width: '80%' }} src={aboutUsImg} alt='' />
-          </div>
+          <ul className='timeline'>
+            <li>
+              <div className='timeline-image'>
+                
+              </div>
+              <div className='timeline-panel'>
+                <div className='timeline-heading'>
+                  <h4>2015-2022</h4>
+                  <h4 className='subheading'>
+                    Experienced Aerial Cinematographers
+                  </h4>
+                </div>
+                <div className='timeline-body'>
+                  <p className='text-muted'>
+                    Founded in 2015, Drone Fleet was one of the first e-commerce
+                    stores for drones. The original Drone Fleet owners were
+                    experienced cinematographers, who at the time were mounting
+                    film and video cameras to RC helicopters for aerial shots,
+                    Drone Fleet started in a garage with one mission in mind; to
+                    bring drones to the film industry. Working on films such as
+                    Michael Bay's Transformers, Drone Fleet quickly grew to
+                    become a well-known name in the movie industry.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li className='timeline-inverted'>
+              <div className='timeline-image'>
+               
+              </div>
+              <div className='timeline-panel'>
+                <div className='timeline-heading'>
+                  <h4>March 2017</h4>
+                  <h4 className='subheading'>
+                    One Of The First DJI Authorized Dealers
+                  </h4>
+                </div>
+                <div className='timeline-body'>
+                  <p className='text-muted'>
+                    As one of the first DJI Authorized dealers in North America,
+                    Drone Fleet worked closely with DJI and established a
+                    long-standing relationship that allows us to deliver the
+                    highest quality drones before anyone else.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className='timeline-image'>
+                
+              </div>
+              <div className='timeline-panel'>
+                <div className='timeline-heading'>
+                  <h4>December 2018</h4>
+                  <h4 className='subheading'>Opened Drone Fleet Storefront</h4>
+                </div>
+                <div className='timeline-body'>
+                  <p className='text-muted'>
+                    In 2018, Drone Fleet moved from our warehouse facility in
+                    Newbury Park, CA to a space in Westlake Village, CA with a
+                    storefront to keep up with the demand for walk-in purchases.
+                    We were visited by customers from as far as Dubai and
+                    Brazil.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li className='timeline-inverted'>
+              <div className='timeline-image'>
+                
+              </div>
+              <div className='timeline-panel'>
+                <div className='timeline-heading'>
+                  <h4>July 2019</h4>
+                  <h4 className='subheading'>Thermal Experts</h4>
+                </div>
+                <div className='timeline-body'>
+                  <p className='text-muted'>
+                    In 2019, Drone Fleet's mission was to scale to be the leader in
+                    thermal drones for commercial applications. With our team of
+                    highly experienced thermal UAV experts, we continue to
+                    create practical solutions for first responders, agriculture
+                    professionals, energy inspection and more. In a short amount
+                    of time, we have curated many effective enterprise packages
+                    that have helped local and national entities achieve their
+                    specific goals.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li className='timeline-inverted'>
+              <div className='timeline-image'>
+                <h4>
+                  Be Part
+                  <br />
+                  Of Our
+                  <br />
+                  Story!
+                </h4>
+              </div>
+            </li>
+          </ul>
         </div>
-      </div>
+      </section>
       {!props.home && <Footer />}
     </div>
   )

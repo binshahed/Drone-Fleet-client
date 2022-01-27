@@ -68,18 +68,15 @@ const ManageProducts = () => {
                 />{' '}
               </td>
               <td>{product?.product_name}</td>
-              <td>{product?._id}$</td>
+              <td>{product?._id}</td>
               <td>{product?.product_price}$</td>
               <td>
                 <button
                   onClick={() => handleDelete(product._id)}
                   className='btn btn-danger text-center'
-                  title="Delete Product"
+                  title='Delete Product'
                 >
-                  <FontAwesomeIcon
-                    icon={faTrash}
-                    style={{ color: '#fff',  }}
-                  />
+                  <FontAwesomeIcon icon={faTrash} style={{ color: '#fff' }} />
                 </button>
               </td>
             </tr>

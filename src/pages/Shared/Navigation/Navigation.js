@@ -31,6 +31,9 @@ const Navigation = () => {
             <NavLink activeStyle={activeStyle} to='/drones'>
               Drones
             </NavLink>
+            <NavLink activeStyle={activeStyle} to='/reviews'>
+              Reviews
+            </NavLink>
             <NavLink activeStyle={activeStyle} to='/about'>
               About Us
             </NavLink>
