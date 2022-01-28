@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Login = () => {
-  const { loginUser, isLoading, authError, googleSignIn } = useAuth()
+  const { loginUser, isLoading, error, googleSignIn } = useAuth()
 
   const location = useLocation()
   const history = useHistory()
@@ -78,12 +78,12 @@ const Login = () => {
                     Sign in with Google
                   </button>
                 </div>
-                {authError && (
+                {error && (
                   <Alert
                     style={{ textAlign: 'center', marginTop: '15px' }}
                     variant='danger'
                   >
-                    {authError}
+                    {error}
                   </Alert>
                 )}
               </div>

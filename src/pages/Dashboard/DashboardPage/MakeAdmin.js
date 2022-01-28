@@ -1,17 +1,43 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Spinner, Table } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 
 const MakeAdmin = () => {
   const { register, handleSubmit, reset } = useForm()
+  const [isLoading, setIsLoading] = useState(false)
+  const [users, setUsers] = useState([])
   const onSubmit = data => {
- 
-    axios.put('https://intense-cliffs-56179.herokuapp.com/users/admin', data).then(res => {
-      if (res.data.modifiedCount) {
-        alert('admin Add successfully')
-        reset()
-      }
-    })
+    axios
+      .put('https://intense-cliffs-56179.herokuapp.com/users/admin', data)
+      .then(res => {
+        if (res.data.modifiedCount) {
+          alert('admin Add successfully')
+          reset()
+        }
+      })
+  }
+
+  useEffect(() => {
+    setIsLoading(true)
+    fetch('http://localhost:5000/users')
+      .then(response => response.json())
+      .then(data => {
+        setUsers(data)
+        setIsLoading(false)
+      })
+  }, [])
+
+  if (isLoading) {
+    return (
+      <div className='App my-5'>
+        <Spinner
+          style={{ marginTop: '200px', height: '100px', width: '100px' }}
+          animation='border'
+          variant='warning'
+        />
+      </div>
+    )
   }
 
   return (
@@ -49,6 +75,30 @@ const MakeAdmin = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div>
+        <h2 className='text-center pt-5 mt-5'>All Users</h2>
+        <Table striped responsive='sm'>
+          <thead className='text-center'>
+            <tr>
+              <th>Sl</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody className='text-center'>
+            {users.map((user, index) => (
+              <tr key={user._id}>
+                <td>{index + 1}</td>
+                <td>{user?.displayName}</td>
+                <td>{user?.email}</td>
+                <td>{user?.role || 'user'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </div>
     </div>
   )

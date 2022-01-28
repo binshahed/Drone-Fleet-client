@@ -24,7 +24,7 @@ const AddProduct = () => {
               <div className='mb-4'>
                 <label className='form-label'>Product Name</label>
                 <input
-                  {...register('product_name ', { required: true })}
+                  {...register('product_name', { required: true })}
                   type='text'
                   className='form-control'
                   id='username'

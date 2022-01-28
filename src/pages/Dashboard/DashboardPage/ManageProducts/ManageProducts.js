@@ -42,8 +42,8 @@ const ManageProducts = () => {
   return (
     <div className='container'>
       <h1 className='text-center my-5'>My Orders</h1>
-      <Table striped bordered hover>
-        <thead>
+      <Table striped responsive='sm'>
+        <thead className="text-center">
           <tr>
             <th>Sl</th>
             <th>Product image</th>
@@ -54,7 +54,7 @@ const ManageProducts = () => {
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-center">
           {products.map((product, index) => (
             <tr key={product._id}>
               <td>{index + 1}</td>

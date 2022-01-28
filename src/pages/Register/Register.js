@@ -11,25 +11,24 @@ import {
 import { Alert, Spinner } from 'react-bootstrap'
 
 const Register = () => {
-  const { user, isLoading, registerUser, authError, googleSignIn } = useAuth()
+  const { user, isLoading, handleSignUpWithEmailPassword,error, authError, googleSignIn } = useAuth()
 
   const location = useLocation()
   const history = useHistory()
   const redirect_uri = location.state?.from || '/'
 
-  const {
-    register,
-    handleSubmit,
-    
-  } = useForm()
+  const { register, handleSubmit } = useForm()
   const onSubmit = data => {
-    if (data.password !== data.password1) {
-      alert('password dose not matched')
-      return
-    }
-    registerUser(data.email, data.password, data.name,history, redirect_uri)
-
+    handleSignUpWithEmailPassword(
+      data.name,
+      data.email,
+      data.password,
+      history,
+      redirect_uri
+    )
   }
+
+  console.log(authError);
 
   return (
     <div>
@@ -95,7 +94,7 @@ const Register = () => {
                     <Link to='/login'>Login</Link>.
                   </p>
                   <button
-                    onClick={()=>googleSignIn(history, redirect_uri)}
+                    onClick={() => googleSignIn(history, redirect_uri)}
                     type='button'
                     className='login-with-google-btn'
                   >
@@ -110,12 +109,12 @@ const Register = () => {
                     User Successfully Created
                   </Alert>
                 )}
-                {authError && (
+                {error && (
                   <Alert
                     style={{ textAlign: 'center', marginTop: '15px' }}
                     variant='danger'
                   >
-                    {authError}
+                    {error}
                   </Alert>
                 )}
               </div>

@@ -72,9 +72,9 @@ const AllOrders = () => {
   return (
     <div className='container'>
       <h1 className='text-center py-5'>Manage All Order</h1>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
+      <Table striped  responsive='sm'>
+        <thead className="text-center">
+          <tr >
             <th>Sl</th>
             <th>Name</th>
             <th>Email</th>
@@ -82,11 +82,10 @@ const AllOrders = () => {
             <th>Address</th>
             <th>Order Date</th>
             <th>Status</th>
-            <th>Delete Order</th>
-            <th>Delivery</th>
+            <th>Confirm Order Status</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-center">
           {orders.map((order, index) => (
             <tr key={order._id}>
               <td>{index + 1}</td>
@@ -96,31 +95,27 @@ const AllOrders = () => {
               <td>{order?.address}</td>
               <td>{order?.date}</td>
               <td>{order?.status}</td>
-              <td>
+              <td className="text-start" >
                 <button
                   onClick={() => handleDelete(order._id)}
-                  className='btn btn-danger'
+                  className='btn btn-danger mx-2'
                   title='Delete Order'
                 >
                   <FontAwesomeIcon icon={faTrash} style={{ color: '#fff' }} />
                 </button>
+                {order?.status === 'pending' && (
+                  <button
+                    onClick={() => handleUpdateStatus(order._id)}
+                    className='btn btn-success'
+                    title='Confirm Order'
+                  >
+                    <FontAwesomeIcon
+                      icon={faCheckSquare}
+                      style={{ color: '#fff' }}
+                    />
+                  </button>
+                )}
               </td>
-              {order?.status === 'pending' && (
-                <>
-                  <td>
-                    <button
-                      onClick={() => handleUpdateStatus(order._id)}
-                      className='btn btn-success'
-                      title='Confirm Order'
-                    >
-                      <FontAwesomeIcon
-                        icon={faCheckSquare}
-                        style={{ color: '#fff' }}
-                      />
-                    </button>
-                  </td>
-                </>
-              )}
             </tr>
           ))}
         </tbody>

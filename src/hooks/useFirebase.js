@@ -15,13 +15,11 @@ const useFirebase = () => {
   const [user, setUser] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
-  const [authError, setAuthError] = useState('')
+
   const [admin, setAdmin] = useState(false)
 
   const auth = getAuth()
   const googleProvider = new GoogleAuthProvider()
-
-  
 
   const googleSignIn = (history, redirect_uri) => {
     setIsLoading(true)
@@ -42,41 +40,39 @@ const useFirebase = () => {
       })
   }
 
-  const registerUser = (email, password, name, history, redirect_uri) => {
-    setIsLoading(true)
-    createUserWithEmailAndPassword(auth, email, password).then(
-      userCredential => {
-        // Signed in
-
-        setAuthError('')
-        const newUser = { email, displayName: name }
-        // saveUser(email, name, 'POST')
-        setUser(newUser)
-
-        updateProfile(auth.currentUser, {
-          displayName: name
-        })
-          .then(() => {
-            // Profile updated!
-            // ...
-          })
-          .catch(error => {
-            // An error occurred
-            // ...
-          })
-
-        // ...
-      },
-      saveUserDB(email, name)
-    )
-    history
-      ?.push(redirect_uri)
+  const handleSignUpWithEmailPassword = (
+    name,
+    email,
+    password,
+    history,
+    redirect_uri
+  ) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        const user = userCredential.user
+        setUser(user)
+        updateDisplayName(name)
+        history.push(redirect_uri)
+        setError('')
+      })
       .catch(error => {
-        setAuthError(error.message)
+        const errorMessage = error.message
+        console.log()
+        setError(errorMessage)
         // ..
       })
-      .finally(() => {
-        setIsLoading(false)
+  }
+
+  const updateDisplayName = name => {
+    setIsLoading(true)
+    updateProfile(auth.currentUser, {
+      displayName: name
+    })
+      .then(userCredential => {
+        setUser(userCredential.user)
+      })
+      .catch(() => {
+        setError(error.message)
       })
   }
 
@@ -88,18 +84,17 @@ const useFirebase = () => {
         history.replace(destination)
         // Signed in
 
-        setAuthError('')
+        setError('')
 
         // ...
       })
       .catch(error => {
-        setAuthError(error.message)
+        setError(error.message)
       })
       .finally(() => {
         setIsLoading(false)
       })
   }
-  
 
   // set admin
   useEffect(() => {
@@ -132,8 +127,6 @@ const useFirebase = () => {
     axios.put('https://intense-cliffs-56179.herokuapp.com/users', user).then()
   }
 
-  
-
   /*-------------
     sign out
     ---------------*/
@@ -161,9 +154,8 @@ const useFirebase = () => {
     setError,
     googleSignIn,
     handleSignOut,
-    registerUser,
-    loginUser,
-    authError
+    handleSignUpWithEmailPassword,
+    loginUser
   }
 }
 export default useFirebase

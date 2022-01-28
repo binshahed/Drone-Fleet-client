@@ -48,7 +48,7 @@ const OrderList = () => {
   return (
     <div className='container'>
       <h1 className='text-center'>My Order</h1>
-      <Table striped bordered hover>
+      <Table responsive="sm">
         <thead>
           <tr>
             <th>Sl</th>
