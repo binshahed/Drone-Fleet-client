@@ -20,7 +20,7 @@ const MakeAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch('http://localhost:5000/users')
+    fetch('https://intense-cliffs-56179.herokuapp.com/users')
       .then(response => response.json())
       .then(data => {
         setUsers(data)
