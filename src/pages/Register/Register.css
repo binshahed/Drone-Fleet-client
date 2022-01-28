@@ -1,17 +1,12 @@
-  
-  input:focus, button:focus,select:focus {
-    border: 1px solid var(--main-bg) !important;
-    box-shadow: none !important;
-  }
-  
-  .form-check-input:checked,select:checked {
-    background-color: var(--main-bg) !important;
-    border-color: var(--main-bg) !important;
-  }
-  
-  .card, .btn, input, select{
-    border-radius:0 !important;
-  }
-  
+input:focus,
+button:focus,
+select:focus {
+  border: 1px solid var(--main-bg) !important;
+  box-shadow: none !important;
+}
 
-  
+.form-check-input:checked,
+select:checked {
+  background-color: var(--main-bg) !important;
+  border-color: var(--main-bg) !important;
+}

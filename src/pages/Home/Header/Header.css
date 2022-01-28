@@ -19,7 +19,8 @@ a .round-button{
     border: 10px solid #fff;
     font-size: 30px;
     font-weight: bold;
-    transition: all 1.5s
+    transition: all 1.5s;
+    border-radius:50%
 }
 
 a .round-button:hover{
