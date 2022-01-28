@@ -13,7 +13,9 @@ import {
   faUserShield,
   faPlus,
   faSort,
-  faTasks
+  faTasks,
+  faAlignRight,
+  faCaretLeft
 } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.css'
 import { useRouteMatch } from 'react-router-dom/cjs/react-router-dom.min'
@@ -48,7 +50,16 @@ function Navbar () {
               <AiIcons.AiOutlineClose />
             </NavLink>
           </li>
-          <NavLink activeStyle={activeStyle} to={`${path}`}>
+          <NavLink exact  activeStyle={activeStyle} to='/'>
+            <h5>
+              <FontAwesomeIcon
+                icon={faCaretLeft}
+                style={{ color: '#fff', marginRight: '20px' }}
+              />
+              Back To Site
+            </h5>
+          </NavLink>
+          <NavLink exact activeStyle={activeStyle} to={`${path}`}>
             <h5>
               <FontAwesomeIcon
                 icon={faHome}

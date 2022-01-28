@@ -6,22 +6,25 @@ import Navigation from '../Shared/Navigation/Navigation'
 import SingleProduct from './SingleProduct'
 
 const AllProducts = props => {
-  const [products,setProducts, waiting] = useProducts([])
-  console.log(products)
+  const [products, setProducts, waiting] = useProducts([])
 
   const homeProduct = products.slice(0, 6)
 
   if (waiting) {
     return (
       <div className='App my-5'>
-        <Spinner style={{marginTop:'200px', height:'100px', width:'100px'}} animation='border' variant='warning' />
+        <Spinner
+          style={{ marginTop: '200px', height: '100px', width: '100px' }}
+          animation='border'
+          variant='warning'
+        />
       </div>
     )
   }
 
   return (
     <div className='allProducts '>
-        {!props?.home && <Navigation/>}
+      {!props?.home && <Navigation />}
       <div className='container py-5'>
         <h1 className='text-center py-5 my-5 pseudo_border'>Drone Products</h1>
         <Row xs={1} md={3} className='g-4'>
@@ -40,7 +43,7 @@ const AllProducts = props => {
               ))}
         </Row>
       </div>
-      {!props?.home && <Footer/>}
+      {!props?.home && <Footer />}
     </div>
   )
 }

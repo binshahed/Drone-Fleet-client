@@ -8,7 +8,7 @@ const useProducts = () => {
 
   useEffect(() => {
     setWaiting(true)
-    fetch('http://localhost:5000/products')
+    fetch('https://intense-cliffs-56179.herokuapp.com/products')
       .then(res => res.json())
       .then(data => {
         setProducts(data)

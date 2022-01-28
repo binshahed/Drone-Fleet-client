@@ -21,14 +21,8 @@ const Login = () => {
     googleSignIn(history, redirect_uri)
   }
 
-  const {
-    register,
-    handleSubmit,
-
-    formState: { errors }
-  } = useForm()
+  const { register, handleSubmit } = useForm()
   const onSubmit = data => {
-    console.log(data)
     loginUser(data.email, data.password, location, history)
   }
 

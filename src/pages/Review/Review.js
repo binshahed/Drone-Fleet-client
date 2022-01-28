@@ -11,12 +11,12 @@ const Review = props => {
 
   useEffect(() => {
     setIsLoading(true)
-    axios.get(`http://localhost:5000/review`).then(response => {
+    axios.get(`https://intense-cliffs-56179.herokuapp.com/review`).then(response => {
       setReviews(response.data)
       setIsLoading(false)
     })
   }, [])
-  console.log(reviews)
+
 
   if (isLoading) {
     return (

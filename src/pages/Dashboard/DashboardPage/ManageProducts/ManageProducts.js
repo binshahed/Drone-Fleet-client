@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import { Spinner, Table } from 'react-bootstrap'
 import useProducts from '../../../../hooks/useProducts'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,13 +5,13 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const ManageProducts = () => {
   const [products, setProducts, waiting] = useProducts([])
-  console.log(products)
+
 
   //   setAllProduct(products)
 
   const handleDelete = id => {
     const proceed = window.confirm('Are you sure? Delete This Product')
-    const url = `http://localhost:5000/products/${id}`
+    const url = `https://intense-cliffs-56179.herokuapp.com/products/${id}`
     if (proceed) {
       fetch(url, {
         method: 'DELETE'

@@ -1,5 +1,4 @@
 import React from 'react'
-import aboutUsImg from '../../images/aboutus.jpg'
 import Footer from '../Footer/Footer'
 import Navigation from '../Shared/Navigation/Navigation'
 import './AboutUs.css'
@@ -32,9 +31,7 @@ const AboutUs = props => {
           </div>
           <ul className='timeline'>
             <li>
-              <div className='timeline-image'>
-                
-              </div>
+              <div className='timeline-image'></div>
               <div className='timeline-panel'>
                 <div className='timeline-heading'>
                   <h4>2015-2022</h4>
@@ -57,9 +54,7 @@ const AboutUs = props => {
               </div>
             </li>
             <li className='timeline-inverted'>
-              <div className='timeline-image'>
-               
-              </div>
+              <div className='timeline-image'></div>
               <div className='timeline-panel'>
                 <div className='timeline-heading'>
                   <h4>March 2017</h4>
@@ -78,9 +73,7 @@ const AboutUs = props => {
               </div>
             </li>
             <li>
-              <div className='timeline-image'>
-                
-              </div>
+              <div className='timeline-image'></div>
               <div className='timeline-panel'>
                 <div className='timeline-heading'>
                   <h4>December 2018</h4>
@@ -98,9 +91,7 @@ const AboutUs = props => {
               </div>
             </li>
             <li className='timeline-inverted'>
-              <div className='timeline-image'>
-                
-              </div>
+              <div className='timeline-image'></div>
               <div className='timeline-panel'>
                 <div className='timeline-heading'>
                   <h4>July 2019</h4>
@@ -108,9 +99,9 @@ const AboutUs = props => {
                 </div>
                 <div className='timeline-body'>
                   <p className='text-muted'>
-                    In 2019, Drone Fleet's mission was to scale to be the leader in
-                    thermal drones for commercial applications. With our team of
-                    highly experienced thermal UAV experts, we continue to
+                    In 2019, Drone Fleet's mission was to scale to be the leader
+                    in thermal drones for commercial applications. With our team
+                    of highly experienced thermal UAV experts, we continue to
                     create practical solutions for first responders, agriculture
                     professionals, energy inspection and more. In a short amount
                     of time, we have curated many effective enterprise packages

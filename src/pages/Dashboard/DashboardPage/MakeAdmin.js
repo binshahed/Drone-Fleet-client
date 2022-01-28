@@ -5,8 +5,8 @@ import { useForm } from 'react-hook-form'
 const MakeAdmin = () => {
   const { register, handleSubmit, reset } = useForm()
   const onSubmit = data => {
-    console.log(data)
-    axios.put('http://localhost:5000/users/admin', data).then(res => {
+ 
+    axios.put('https://intense-cliffs-56179.herokuapp.com/users/admin', data).then(res => {
       if (res.data.modifiedCount) {
         alert('admin Add successfully')
         reset()

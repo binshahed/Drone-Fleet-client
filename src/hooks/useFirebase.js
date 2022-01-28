@@ -103,7 +103,7 @@ const useFirebase = () => {
 
   // set admin
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://intense-cliffs-56179.herokuapp.com/users/${user.email}`)
       .then(response => response.json())
       .then(data => {
         setAdmin(data.admin)
@@ -125,11 +125,11 @@ const useFirebase = () => {
 
   const saveUserDB = (email, displayName) => {
     const user = { email, displayName }
-    axios.post('http://localhost:5000/users', user).then()
+    axios.post('https://intense-cliffs-56179.herokuapp.com/users', user).then()
   }
   const upsertUserDb = (email, displayName) => {
     const user = { email, displayName }
-    axios.put('http://localhost:5000/users', user).then()
+    axios.put('https://intense-cliffs-56179.herokuapp.com/users', user).then()
   }
 
   

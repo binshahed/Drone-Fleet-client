@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+
 
 import { Route, Switch } from 'react-router-dom'
 import './Navbar.css'
@@ -19,8 +19,8 @@ import ManageProducts from '../DashboardPage/ManageProducts/ManageProducts'
 import NotFound from '../../NotFound/NotFound'
 
 function Dashboard () {
-  let { path, url } = useRouteMatch()
-  const { isLoading, admin } = useAuth()
+  let { path } = useRouteMatch()
+  const { isLoading } = useAuth()
 
   if (isLoading) {
     return (

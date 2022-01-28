@@ -25,14 +25,14 @@ const ProductDetail = () => {
     data.status = 'pending'
     data.date = date.toLocaleDateString()
 
-    axios.post('http://localhost:5000/orders', data).then(res => {
+    axios.post('https://intense-cliffs-56179.herokuapp.com/orders', data).then(res => {
       if (res.data.insertedId) {
         alert('added successfully')
         reset()
       }
     })
 
-    console.log(data)
+
   }
 
   if (waiting) {

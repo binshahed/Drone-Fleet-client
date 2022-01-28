@@ -20,7 +20,7 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    
   } = useForm()
   const onSubmit = data => {
     if (data.password !== data.password1) {
@@ -28,7 +28,7 @@ const Register = () => {
       return
     }
     registerUser(data.email, data.password, data.name,history, redirect_uri)
-    console.log(data)
+
   }
 
   return (

@@ -21,14 +21,14 @@ const Review = () => {
     data.rating = rating
 
 
-    axios.post('http://localhost:5000/review', data).then(res => {
+    axios.post('https://intense-cliffs-56179.herokuapp.com/review', data).then(res => {
       if (res.data.insertedId) {
         alert('Review Add Successfully')
         reset()
       }
     })
 
-    console.log(data)
+
   }
   return (
     <div className='container'>

@@ -33,7 +33,7 @@ const Header = () => {
         </div>
         <div className='d-flex align-items-center justify-content-center mt-5'>
           <Link to='/drones'>
-            <Button className="rounded-circle round-button">See More <br /> Product</Button>
+            <Button className="rounded-circle round-button">Explore</Button>
           </Link>
         </div>
       </div>

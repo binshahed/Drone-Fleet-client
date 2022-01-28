@@ -10,7 +10,7 @@ const AllOrders = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch('http://localhost:5000/orders')
+    fetch('https://intense-cliffs-56179.herokuapp.com/orders')
       .then(response => response.json())
       .then(data => {
         setOrders(data)
@@ -23,7 +23,7 @@ const AllOrders = () => {
     if (proceed) {
       const shippedData = orders?.find(order => order._id === id)
       shippedData.status = 'shipped'
-      const url = `http://localhost:5000/orders/${id}`
+      const url = `https://intense-cliffs-56179.herokuapp.com/orders/${id}`
       fetch(url, {
         method: 'PUT',
         headers: {
@@ -53,7 +53,7 @@ const AllOrders = () => {
 
   const handleDelete = id => {
     const proceed = window.confirm('Are you sure? Delete This Product')
-    const url = `http://localhost:5000/orders/${id}`
+    const url = `https://intense-cliffs-56179.herokuapp.com/orders/${id}`
     if (proceed) {
       fetch(url, {
         method: 'DELETE'
