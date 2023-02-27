@@ -25,20 +25,22 @@ const ProductDetail = () => {
     data.status = 'pending'
     data.date = date.toLocaleDateString()
 
-    axios.post('https://intense-cliffs-56179.herokuapp.com/orders', data).then(res => {
+    axios.post('http://localhost:5000/orders', data).then(res => {
       if (res.data.insertedId) {
         alert('added successfully')
         reset()
       }
     })
-
-
   }
 
   if (waiting) {
     return (
       <div className='App my-5'>
-        <Spinner style={{marginTop:'200px', height:'100px', width:'100px'}} animation='border' variant='warning' />
+        <Spinner
+          style={{ marginTop: '200px', height: '100px', width: '100px' }}
+          animation='border'
+          variant='warning'
+        />
       </div>
     )
   }

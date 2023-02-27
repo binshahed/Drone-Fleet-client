@@ -10,7 +10,7 @@ const AllOrders = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch('https://intense-cliffs-56179.herokuapp.com/orders')
+    fetch('http://localhost:5000/orders')
       .then(response => response.json())
       .then(data => {
         setOrders(data)
@@ -23,7 +23,7 @@ const AllOrders = () => {
     if (proceed) {
       const shippedData = orders?.find(order => order._id === id)
       shippedData.status = 'shipped'
-      const url = `https://intense-cliffs-56179.herokuapp.com/orders/${id}`
+      const url = `http://localhost:5000/orders/${id}`
       fetch(url, {
         method: 'PUT',
         headers: {
@@ -53,7 +53,7 @@ const AllOrders = () => {
 
   const handleDelete = id => {
     const proceed = window.confirm('Are you sure? Delete This Product')
-    const url = `https://intense-cliffs-56179.herokuapp.com/orders/${id}`
+    const url = `http://localhost:5000/orders/${id}`
     if (proceed) {
       fetch(url, {
         method: 'DELETE'
@@ -72,9 +72,9 @@ const AllOrders = () => {
   return (
     <div className='container'>
       <h1 className='text-center py-5'>Manage All Order</h1>
-      <Table striped  responsive='sm'>
-        <thead className="text-center">
-          <tr >
+      <Table striped responsive='sm'>
+        <thead className='text-center'>
+          <tr>
             <th>Sl</th>
             <th>Name</th>
             <th>Email</th>
@@ -85,7 +85,7 @@ const AllOrders = () => {
             <th>Confirm Order Status</th>
           </tr>
         </thead>
-        <tbody className="text-center">
+        <tbody className='text-center'>
           {orders.map((order, index) => (
             <tr key={order._id}>
               <td>{index + 1}</td>
@@ -95,7 +95,7 @@ const AllOrders = () => {
               <td>{order?.address}</td>
               <td>{order?.date}</td>
               <td>{order?.status}</td>
-              <td className="text-start" >
+              <td className='text-start'>
                 <button
                   onClick={() => handleDelete(order._id)}
                   className='btn btn-danger mx-2'

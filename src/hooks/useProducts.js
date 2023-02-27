@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-
 // load data from db
 const useProducts = () => {
   const [products, setProducts] = useState([])
@@ -8,7 +7,7 @@ const useProducts = () => {
 
   useEffect(() => {
     setWaiting(true)
-    fetch('https://intense-cliffs-56179.herokuapp.com/products')
+    fetch('http://localhost:5000/products')
       .then(res => res.json())
       .then(data => {
         setProducts(data)
@@ -16,6 +15,6 @@ const useProducts = () => {
       })
   }, [])
 
-  return [products, setProducts,  waiting]
+  return [products, setProducts, waiting]
 }
 export default useProducts

@@ -12,7 +12,6 @@ const Review = () => {
   // Catch Rating value
   const handleRating = rate => {
     setRating(rate)
-    
   }
 
   const onSubmit = data => {
@@ -20,19 +19,18 @@ const Review = () => {
     data.date = date.toLocaleDateString()
     data.rating = rating
 
-
-    axios.post('https://intense-cliffs-56179.herokuapp.com/review', data).then(res => {
+    axios.post('http://localhost:5000/review', data).then(res => {
       if (res.data.insertedId) {
         alert('Review Add Successfully')
         reset()
       }
     })
-
-
   }
   return (
     <div className='container'>
-      <h1 className='text-center mt-5 text-warning'>Place Your Review About Our Drone Store</h1>
+      <h1 className='text-center mt-5 text-warning'>
+        Place Your Review About Our Drone Store
+      </h1>
       <div className='py-5'>
         <div className='card shadow'>
           <div className='card-title  border-bottom'>

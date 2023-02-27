@@ -8,19 +8,17 @@ const MakeAdmin = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [users, setUsers] = useState([])
   const onSubmit = data => {
-    axios
-      .put('https://intense-cliffs-56179.herokuapp.com/users/admin', data)
-      .then(res => {
-        if (res.data.modifiedCount) {
-          alert('admin Add successfully')
-          reset()
-        }
-      })
+    axios.put('http://localhost:5000/users/admin', data).then(res => {
+      if (res.data.modifiedCount) {
+        alert('admin Add successfully')
+        reset()
+      }
+    })
   }
 
   useEffect(() => {
     setIsLoading(true)
-    fetch('https://intense-cliffs-56179.herokuapp.com/users')
+    fetch('http://localhost:5000/users')
       .then(response => response.json())
       .then(data => {
         setUsers(data)

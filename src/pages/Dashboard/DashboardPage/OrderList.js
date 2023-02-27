@@ -7,7 +7,7 @@ const OrderList = () => {
   const [myOrders, setMyOrders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
-    fetch(`https://intense-cliffs-56179.herokuapp.com/orders?email=${user.email}`)
+    fetch(`http://localhost:5000/orders?email=${user.email}`)
       .then(response => response.json())
       .then(data => {
         setMyOrders(data)
@@ -17,7 +17,7 @@ const OrderList = () => {
 
   const handleDelete = id => {
     const proceed = window.confirm('Are you sure? Delete This Product')
-    const url = `https://intense-cliffs-56179.herokuapp.com/orders/${id}`
+    const url = `http://localhost:5000/orders/${id}`
     if (proceed) {
       fetch(url, {
         method: 'DELETE'
@@ -48,7 +48,7 @@ const OrderList = () => {
   return (
     <div className='container'>
       <h1 className='text-center'>My Order</h1>
-      <Table responsive="sm">
+      <Table responsive='sm'>
         <thead>
           <tr>
             <th>Sl</th>

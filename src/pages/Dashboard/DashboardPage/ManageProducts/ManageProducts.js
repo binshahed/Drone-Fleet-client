@@ -6,12 +6,11 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 const ManageProducts = () => {
   const [products, setProducts, waiting] = useProducts([])
 
-
   //   setAllProduct(products)
 
   const handleDelete = id => {
     const proceed = window.confirm('Are you sure? Delete This Product')
-    const url = `https://intense-cliffs-56179.herokuapp.com/products/${id}`
+    const url = `http://localhost:5000/products/${id}`
     if (proceed) {
       fetch(url, {
         method: 'DELETE'
@@ -43,7 +42,7 @@ const ManageProducts = () => {
     <div className='container'>
       <h1 className='text-center my-5'>My Orders</h1>
       <Table striped responsive='sm'>
-        <thead className="text-center">
+        <thead className='text-center'>
           <tr>
             <th>Sl</th>
             <th>Product image</th>
@@ -54,7 +53,7 @@ const ManageProducts = () => {
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody className="text-center">
+        <tbody className='text-center'>
           {products.map((product, index) => (
             <tr key={product._id}>
               <td>{index + 1}</td>
