@@ -2,13 +2,14 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Spinner, Table } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import { apiUrl } from '../../../config/config'
 
 const MakeAdmin = () => {
   const { register, handleSubmit, reset } = useForm()
   const [isLoading, setIsLoading] = useState(false)
   const [users, setUsers] = useState([])
   const onSubmit = data => {
-    axios.put('http://localhost:5000/users/admin', data).then(res => {
+    axios.put(`${apiUrl}/users/admin`, data).then(res => {
       if (res.data.modifiedCount) {
         alert('admin Add successfully')
         reset()
@@ -18,7 +19,7 @@ const MakeAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch('http://localhost:5000/users')
+    fetch(`${apiUrl}/users`)
       .then(response => response.json())
       .then(data => {
         setUsers(data)

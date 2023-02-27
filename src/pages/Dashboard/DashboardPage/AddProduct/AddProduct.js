@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { apiUrl } from '../../../../config/config'
 
 const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm()
   const onSubmit = data => {
-    axios.post('http://localhost:5000/products', data).then(res => {
+    axios.post(`${apiUrl}/products`, data).then(res => {
       if (res.data.insertedId) {
         alert('added successfully')
         reset()

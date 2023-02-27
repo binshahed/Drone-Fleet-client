@@ -3,6 +3,7 @@ import React from 'react'
 import { Spinner } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
+import { apiUrl } from '../../config/config'
 import useProducts from '../../hooks/useProducts'
 import useAuth from '../context/useAuth'
 import Footer from '../Footer/Footer'
@@ -25,7 +26,7 @@ const ProductDetail = () => {
     data.status = 'pending'
     data.date = date.toLocaleDateString()
 
-    axios.post('http://localhost:5000/orders', data).then(res => {
+    axios.post(`${apiUrl}/orders`, data).then(res => {
       if (res.data.insertedId) {
         alert('added successfully')
         reset()

@@ -2,6 +2,7 @@ import { Spinner, Table } from 'react-bootstrap'
 import useProducts from '../../../../hooks/useProducts'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { apiUrl } from '../../../../config/config'
 
 const ManageProducts = () => {
   const [products, setProducts, waiting] = useProducts([])
@@ -10,7 +11,7 @@ const ManageProducts = () => {
 
   const handleDelete = id => {
     const proceed = window.confirm('Are you sure? Delete This Product')
-    const url = `http://localhost:5000/products/${id}`
+    const url = `${apiUrl}/products/${id}`
     if (proceed) {
       fetch(url, {
         method: 'DELETE'

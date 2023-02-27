@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Card, Spinner } from 'react-bootstrap'
 import { Rating } from 'react-simple-star-rating'
+import { apiUrl } from '../../config/config'
 import Footer from '../Footer/Footer'
 import Navigation from '../Shared/Navigation/Navigation'
 
@@ -11,7 +12,7 @@ const Review = props => {
 
   useEffect(() => {
     setIsLoading(true)
-    axios.get(`http://localhost:5000/review`).then(response => {
+    axios.get(`${apiUrl}/review`).then(response => {
       setReviews(response.data)
       setIsLoading(false)
     })

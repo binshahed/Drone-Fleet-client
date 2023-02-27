@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Spinner, Table } from 'react-bootstrap'
+import { apiUrl } from '../../../config/config'
 import useAuth from '../../context/useAuth'
 
 const OrderList = () => {
@@ -7,7 +8,7 @@ const OrderList = () => {
   const [myOrders, setMyOrders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
-    fetch(`http://localhost:5000/orders?email=${user.email}`)
+    fetch(`${apiUrl}/orders?email=${user.email}`)
       .then(response => response.json())
       .then(data => {
         setMyOrders(data)
@@ -17,7 +18,7 @@ const OrderList = () => {
 
   const handleDelete = id => {
     const proceed = window.confirm('Are you sure? Delete This Product')
-    const url = `http://localhost:5000/orders/${id}`
+    const url = `${apiUrl}/orders/${id}`
     if (proceed) {
       fetch(url, {
         method: 'DELETE'

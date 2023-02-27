@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Rating } from 'react-simple-star-rating'
+import { apiUrl } from '../../../config/config'
 import useAuth from '../../context/useAuth'
 
 const Review = () => {
@@ -19,7 +20,7 @@ const Review = () => {
     data.date = date.toLocaleDateString()
     data.rating = rating
 
-    axios.post('http://localhost:5000/review', data).then(res => {
+    axios.post(`${apiUrl}/review`, data).then(res => {
       if (res.data.insertedId) {
         alert('Review Add Successfully')
         reset()

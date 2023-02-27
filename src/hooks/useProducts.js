@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { apiUrl } from '../config/config'
 
 // load data from db
 const useProducts = () => {
@@ -7,7 +8,7 @@ const useProducts = () => {
 
   useEffect(() => {
     setWaiting(true)
-    fetch('http://localhost:5000/products')
+    fetch(`${apiUrl}/products`)
       .then(res => res.json())
       .then(data => {
         setProducts(data)

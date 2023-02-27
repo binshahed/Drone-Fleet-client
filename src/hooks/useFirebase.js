@@ -10,6 +10,7 @@ import {
   updateProfile
 } from 'firebase/auth'
 import { useEffect, useState } from 'react'
+import { apiUrl } from '../config/config'
 
 const useFirebase = () => {
   const [user, setUser] = useState({})
@@ -98,7 +99,7 @@ const useFirebase = () => {
 
   // set admin
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`${apiUrl}/users/${user.email}`)
       .then(response => response.json())
       .then(data => {
         setAdmin(data.admin)
@@ -120,11 +121,11 @@ const useFirebase = () => {
 
   const saveUserDB = (email, displayName) => {
     const user = { email, displayName }
-    axios.post('http://localhost:5000/users', user).then()
+    axios.post(`${apiUrl}/users`, user).then()
   }
   const upsertUserDb = (email, displayName) => {
     const user = { email, displayName }
-    axios.put('http://localhost:5000/users', user).then()
+    axios.put(`${apiUrl}/users`, user).then()
   }
 
   /*-------------
