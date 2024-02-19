@@ -29,9 +29,9 @@ function App () {
             <Route exact path='/drones'>
               <AllProducts />
             </Route>
-            <Route exact path='/reviews'>
+            {/* <Route exact path='/reviews'>
               <Review />
-            </Route>
+            </Route> */}
             <Route exact path='/about'>
               <AboutUs />
             </Route>
