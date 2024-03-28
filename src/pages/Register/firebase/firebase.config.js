@@ -1,9 +1,12 @@
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID
-}   
+  apiKey: "AIzaSyDuf1jpLeSjizr0u8BU_qmEX0zQSrizCu0",
+  authDomain: "drone-fleet-c8b5e.firebaseapp.com",
+  projectId: "drone-fleet-c8b5e",
+  storageBucket: "drone-fleet-c8b5e.appspot.com",
+  messagingSenderId: "156505199526",
+  appId: "1:156505199526:web:3c31900ce2af22ee27f567"
+};
 export default firebaseConfig
+
+
+//mdbinshahed5@gmail.com

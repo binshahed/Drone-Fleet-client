@@ -1,16 +1,8 @@
-# Full Stack Drone Project: [Drone Fleet](https://drone-fleet.netlify.app/)
+# React + Vite
 
-## App Features
-* This is a Website About Selling Drone.
-* The User can see all the available models and brands and order a Drone.
-* The user is able to cancel their order at Before Shipping.
-* they can order one Drone Multiple times and can view all orders of his/her on Dashboard My orders.
-* The Admin can Add new Drone to the Drone page.
-* The Admin can also view all the orders on All Orders page.
-* The Admin Can also delete any order.
-* The admin can make someone else admin.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+Currently, two official plugins are available:
 
-## Technology Uses
-* Front end technology React.js, React Bootstrap, React Router dom, Authentication Firebase.
-* Backend Node, express and database Mongodb.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

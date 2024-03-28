@@ -104,7 +104,7 @@ const useFirebase = () => {
       .then(data => {
         setAdmin(data.admin)
       })
-  }, [user.email])
+  }, [user])
 
   // observer user state
   useEffect(() => {

@@ -32,7 +32,7 @@ const AllProducts = props => {
             ? homeProduct.map(product => (
                 <SingleProduct
                   product={product}
-                  key={product.id}
+                  key={product._id}
                 ></SingleProduct>
               ))
             : products.map(product => (

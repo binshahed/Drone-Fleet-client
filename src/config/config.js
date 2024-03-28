@@ -1,1 +1,1 @@
-export const apiUrl = 'https://drone-fleet-server-production.up.railway.app'
+export const apiUrl = 'http://localhost:5001'
