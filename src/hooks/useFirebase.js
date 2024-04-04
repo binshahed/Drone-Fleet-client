@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,39 +7,38 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  updateProfile
-} from 'firebase/auth'
-import { useEffect, useState } from 'react'
-import { apiUrl } from '../config/config'
+  updateProfile,
+} from "firebase/auth";
+import { useEffect, useState } from "react";
+import { apiUrl } from "../config/config";
 
 const useFirebase = () => {
-  const [user, setUser] = useState({})
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState('')
+  const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  const [admin, setAdmin] = useState(false)
-
-  const auth = getAuth()
-  const googleProvider = new GoogleAuthProvider()
+  const [admin, setAdmin] = useState();
+  const auth = getAuth();
+  const googleProvider = new GoogleAuthProvider();
 
   const googleSignIn = (history, redirect_uri) => {
-    setIsLoading(true)
+    setIsLoading(true);
     signInWithPopup(auth, googleProvider)
-      .then(result => {
-        const user = result.user
-        setError('')
-        setUser(user)
-        upsertUserDb(user.email, user.displayName)
-        history?.push(redirect_uri)
+      .then((result) => {
+        const user = result.user;
+        setError("");
+        setUser(user);
+        upsertUserDb(user.email, user.displayName);
+        history?.push(redirect_uri);
       })
-      .catch(error => {
-        const errorMessage = error.message
-        setError(errorMessage)
+      .catch((error) => {
+        const errorMessage = error.message;
+        setError(errorMessage);
       })
       .finally(() => {
-        setIsLoading(false)
-      })
-  }
+        setIsLoading(false);
+      });
+  };
 
   const handleSignUpWithEmailPassword = (
     name,
@@ -49,101 +48,102 @@ const useFirebase = () => {
     redirect_uri
   ) => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
-        const user = userCredential.user
-        setUser(user)
-        updateDisplayName(name)
-        history.push(redirect_uri)
-        setError('')
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setUser(user);
+        updateDisplayName(name);
+        history.push(redirect_uri);
+        setError("");
       })
-      .catch(error => {
-        const errorMessage = error.message
-        console.log()
-        setError(errorMessage)
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log();
+        setError(errorMessage);
         // ..
-      })
-  }
+      });
+  };
 
-  const updateDisplayName = name => {
-    setIsLoading(true)
+  const updateDisplayName = (name) => {
+    setIsLoading(true);
     updateProfile(auth.currentUser, {
-      displayName: name
+      displayName: name,
     })
-      .then(userCredential => {
-        setUser(userCredential.user)
+      .then((userCredential) => {
+        setUser(userCredential.user);
       })
       .catch(() => {
-        setError(error.message)
-      })
-  }
+        setError(error.message);
+      });
+  };
 
   const loginUser = (email, password, location, history) => {
-    setIsLoading(true)
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
-        const destination = location?.state?.from || '/'
-        history.replace(destination)
+      .then((userCredential) => {
+        const destination = location?.state?.from || "/";
+        history.replace(destination);
         // Signed in
 
-        setError('')
+        setError("");
 
         // ...
       })
-      .catch(error => {
-        setError(error.message)
+      .catch((error) => {
+        setError(error.message);
       })
       .finally(() => {
-        setIsLoading(false)
-      })
-  }
+        setIsLoading(false);
+      });
+  };
 
   // set admin
   useEffect(() => {
     fetch(`${apiUrl}/users/${user.email}`)
-      .then(response => response.json())
-      .then(data => {
-        setAdmin(data.admin)
-      })
-  }, [user])
+      .then((response) => response.json())
+      .then((data) => {
+        setAdmin(data.admin);
+        setIsLoading(false)
+      });
+  }, [user]);
 
   // observer user state
   useEffect(() => {
-    const unsubscribed = onAuthStateChanged(auth, user => {
+    const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user)
+        setUser(user);
       } else {
-        setUser({})
+        setUser({});
       }
-      setIsLoading(false)
-    })
-    return () => unsubscribed
-  }, [auth])
+      setIsLoading(false);
+    });
+    return () => unsubscribed;
+  }, [auth]);
 
   const saveUserDB = (email, displayName) => {
-    const user = { email, displayName }
-    axios.post(`${apiUrl}/users`, user).then()
-  }
+    const user = { email, displayName };
+    axios.post(`${apiUrl}/users`, user).then();
+  };
   const upsertUserDb = (email, displayName) => {
-    const user = { email, displayName }
-    axios.put(`${apiUrl}/users`, user).then()
-  }
+    const user = { email, displayName };
+    axios.put(`${apiUrl}/users`, user).then();
+  };
 
   /*-------------
     sign out
     ---------------*/
 
   const handleSignOut = () => {
-    setIsLoading(true)
+    setIsLoading(true);
     signOut(auth)
       .then(() => {
-        setUser({})
-        setError('')
+        setUser({});
+        setError("");
       })
-      .catch(error => {
-        setError(error.message)
+      .catch((error) => {
+        setError(error.message);
       })
-      .finally(() => setIsLoading(false))
-  }
+      .finally(() => setIsLoading(false));
+  };
 
   return {
     user,
@@ -156,7 +156,7 @@ const useFirebase = () => {
     googleSignIn,
     handleSignOut,
     handleSignUpWithEmailPassword,
-    loginUser
-  }
-}
-export default useFirebase
+    loginUser,
+  };
+};
+export default useFirebase;

@@ -1,30 +1,26 @@
-import React from 'react'
-import { Spinner } from 'react-bootstrap'
-import { Redirect, Route } from 'react-router'
-import useAuth from '../../context/useAuth'
+import React from "react";
+import { Spinner } from "react-bootstrap";
+
+import useAuth from "../../context/useAuth";
+import { Navigate, Outlet } from "react-router-dom";
 
 const AdminRoute = ({ children, ...rest }) => {
-  const { user, admin } = useAuth()
-  if (!admin?.role === 'admin') {
-    return <Spinner animation='border' variant='danger' />
+  const { user, admin, isLoading} = useAuth();
+  console.log('test',admin);
+ 
+  if (isLoading) {
+    return <Spinner animation="border" variant="danger" />;
   }
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        user.email && admin ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/dashboard',
-              state: { from: location }
-            }}
-          />
-        )
-      }
+  return admin ? (
+  <Outlet/>
+  ) : (
+    <Navigate
+      to={{
+        pathname: "/dashboard",
+        state: { from: location },
+      }}
     />
-  )
-}
+  );
+};
 
-export default AdminRoute
+export default AdminRoute;

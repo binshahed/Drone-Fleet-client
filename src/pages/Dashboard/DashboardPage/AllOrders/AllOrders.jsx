@@ -8,6 +8,7 @@ const AllOrders = () => {
   const [orders, setOrders] = useState([])
   const [approved, seApproved] = useState({})
   const [isLoading, setIsLoading] = useState(false)
+  console.log(orders);
 
   useEffect(() => {
     setIsLoading(true)

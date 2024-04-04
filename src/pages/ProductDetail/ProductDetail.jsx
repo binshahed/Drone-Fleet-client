@@ -2,17 +2,18 @@ import axios from 'axios'
 import React from 'react'
 import { Spinner } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
+
 import { apiUrl } from '../../config/config'
 import useProducts from '../../hooks/useProducts'
 import useAuth from '../context/useAuth'
 import Footer from '../Footer/Footer'
 import Navigation from '../Shared/Navigation/Navigation'
+import { useLocation } from 'react-router-dom'
 
 const ProductDetail = () => {
   const [products, setProducts, waiting] = useProducts()
 
-  const { productId } = useParams()
+  const { productId } = useLocation()
   const productFound =
     products.length > 0 &&
     products.find(myProduct => myProduct._id.toString() === productId)

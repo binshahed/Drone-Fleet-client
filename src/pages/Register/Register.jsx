@@ -1,20 +1,18 @@
 import './Register.css'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+
 import Footer from '../Footer/Footer'
 import Navigation from '../Shared/Navigation/Navigation'
 import useAuth from '../context/useAuth'
-import {
-  useHistory,
-  useLocation
-} from 'react-router-dom/cjs/react-router-dom.min'
+
 import { Alert, Spinner } from 'react-bootstrap'
+import { Link, useLocation } from 'react-router-dom'
 
 const Register = () => {
   const { user, isLoading, handleSignUpWithEmailPassword,error, authError, googleSignIn } = useAuth()
 
   const location = useLocation()
-  const history = useHistory()
+ 
   const redirect_uri = location.state?.from || '/'
 
   const { register, handleSubmit } = useForm()
@@ -23,7 +21,7 @@ const Register = () => {
       data.name,
       data.email,
       data.password,
-      history,
+   
       redirect_uri
     )
   }
