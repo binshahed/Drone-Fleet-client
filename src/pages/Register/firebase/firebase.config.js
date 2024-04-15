@@ -1,5 +1,5 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyDuf1jpLeSjizr0u8BU_qmEX0zQSrizCu0",
+  apiKey: "AIzaSyBd_h3f0tLbKG8WdNfSrz5B5HMLO17UtkQ",
   authDomain: "drone-fleet-c8b5e.firebaseapp.com",
   projectId: "drone-fleet-c8b5e",
   storageBucket: "drone-fleet-c8b5e.appspot.com",
