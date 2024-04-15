@@ -21,6 +21,7 @@ import AddProduct from "./pages/Dashboard/DashboardPage/AddProduct/AddProduct";
 import MakeAdmin from "./pages/Dashboard/DashboardPage/MakeAdmin";
 import ManageProducts from "./pages/Dashboard/DashboardPage/ManageProducts/ManageProducts";
 import useAuth from "./pages/context/useAuth";
+import PublicRoute from "./pages/Register/PrivateRoute/PublicRoute";
 
 initializeAuthentication();
 
@@ -33,15 +34,29 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/drones" element={<AllProducts />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            }
+          />
           <Route path="/*" element={<NotFound />} />
           <Route
             path="/drones/:productId"
             element={
-              <PrivateRoute>
-                <ProductDetail />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <ProductDetail />
+              // </PrivateRoute>
             }
           />
 
@@ -58,10 +73,13 @@ function App() {
             <Route path="pay" element={<Pay />} />
             <Route path="review" element={<Review />} />
             {/* admin route */}
-            <Route path="manageOrder" element={admin &&<AllOrders />} />
-            <Route path="addProduct" element={admin&&<AddProduct />} />
-            <Route path="makeAdmin" element={admin &&<MakeAdmin />} />
-            <Route path="manageProducts" element={admin&&<ManageProducts />} />
+            <Route path="manageOrder" element={admin && <AllOrders />} />
+            <Route path="addProduct" element={admin && <AddProduct />} />
+            <Route path="makeAdmin" element={admin && <MakeAdmin />} />
+            <Route
+              path="manageProducts"
+              element={admin && <ManageProducts />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

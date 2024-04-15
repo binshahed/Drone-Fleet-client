@@ -21,7 +21,7 @@ const useFirebase = () => {
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
-  const googleSignIn = (history, redirect_uri) => {
+  const googleSignIn = (navigate, redirect_uri) => {
     setIsLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
@@ -29,7 +29,7 @@ const useFirebase = () => {
         setError("");
         setUser(user);
         upsertUserDb(user.email, user.displayName);
-        history?.push(redirect_uri);
+        navigate(redirect_uri);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -44,7 +44,7 @@ const useFirebase = () => {
     name,
     email,
     password,
-    history,
+    navigate,
     redirect_uri
   ) => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -52,7 +52,7 @@ const useFirebase = () => {
         const user = userCredential.user;
         setUser(user);
         updateDisplayName(name);
-        history.push(redirect_uri);
+        navigate(redirect_uri);
         setError("");
       })
       .catch((error) => {
@@ -102,7 +102,7 @@ const useFirebase = () => {
       .then((response) => response.json())
       .then((data) => {
         setAdmin(data.admin);
-        setIsLoading(false)
+        setIsLoading(false);
       });
   }, [user]);
 
